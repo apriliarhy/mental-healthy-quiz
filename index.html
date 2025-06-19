@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Kesehatan Mental</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      color: #333;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .question {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .question h3 {
+      margin-top: 0;
+    }
+    .option {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    input[type="radio"] {
+      transform: scale(1.2);
+      margin-right: 8px;
+    }
+    .score {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px;
+      background: #e2e3e5;
+      color: #000;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+      margin-top: 20px;
+    }
+    .feedback-box {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #f0f0f0;
+      font-size: 16px;
+      display: none;
+    }
+    @media (max-width: 600px) {
+      body { font-size: 18px; }
+      .option { font-size: 18px; }
+      input[type="radio"] { transform: scale(1.4); }
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container" id="quiz">
+    <h1>Kuis Edukasi: Seberapa Paham Kamu Tentang Kesehatan Mental?</h1>
+    <p><strong>Petunjuk:</strong> Pilih jawaban yang menurutmu benar. Skor dan saran akan muncul otomatis setelah semua soal dijawab.</p>
+
+    <!-- Pertanyaan -->
+    <div class="question" id="q1">
+      <h3>1. Kesehatan mental hanya penting bagi orang yang mengalami gangguan jiwa.</h3>
+      <div class="option"><input type="radio" name="q1" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q1" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q2">
+      <h3>2. Stres itu normal dan bisa terjadi pada siapa saja.</h3>
+      <div class="option"><input type="radio" name="q2" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q2" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q3">
+      <h3>3. Orang yang terlihat bahagia pasti tidak mengalami depresi.</h3>
+      <div class="option"><input type="radio" name="q3" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q3" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q4">
+      <h3>4. Berbicara dengan orang yang dipercaya bisa membantu meringankan beban mental.</h3>
+      <div class="option"><input type="radio" name="q4" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q4" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q5">
+      <h3>5. Gangguan kesehatan mental tidak bisa disembuhkan.</h3>
+      <div class="option"><input type="radio" name="q5" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q5" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q6">
+      <h3>6. Overthinking dapat memengaruhi kualitas tidur dan konsentrasi.</h3>
+      <div class="option"><input type="radio" name="q6" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q6" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q7">
+      <h3>7. Menjaga kesehatan fisik tidak berpengaruh pada kesehatan mental.</h3>
+      <div class="option"><input type="radio" name="q7" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q7" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q8">
+      <h3>8. Anak-anak dan remaja juga dapat mengalami gangguan kesehatan mental.</h3>
+      <div class="option"><input type="radio" name="q8" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q8" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q9">
+      <h3>9. Menangis adalah tanda kelemahan emosional.</h3>
+      <div class="option"><input type="radio" name="q9" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q9" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+    <div class="question" id="q10">
+      <h3>10. Pergi ke psikolog berarti seseorang sedang lemah atau gagal menghadapi masalah.</h3>
+      <div class="option"><input type="radio" name="q10" value="A" onchange="checkAllAnswered()"> A. Benar</div>
+      <div class="option"><input type="radio" name="q10" value="B" onchange="checkAllAnswered()"> B. Salah</div>
+    </div>
+
+    <div class="score" id="final-score"></div>
+    <div class="feedback-box" id="summary-box"></div>
+  </div>
+
+  <script>
+    const correctAnswers = {
+      q1: "B", q2: "A", q3: "B", q4: "A", q5: "B",
+      q6: "A", q7: "B", q8: "A", q9: "B", q10: "B"
+    };
+
+    function checkAllAnswered() {
+      let correctCount = 0;
+      let answeredCount = 0;
+
+      for (let i = 1; i <= 10; i++) {
+        const qid = "q" + i;
+        const selected = document.querySelector('input[name="' + qid + '"]:checked');
+        if (selected) {
+          answeredCount++;
+          if (selected.value === correctAnswers[qid]) {
+            correctCount++;
+          }
+        }
+      }
+
+      if (answeredCount === 10) {
+        const scoreBox = document.getElementById("final-score");
+        const summaryBox = document.getElementById("summary-box");
+        scoreBox.innerHTML = `🎯 Kamu menjawab ${correctCount} dari 10 soal dengan benar.`;
+        scoreBox.style.display = "block";
+
+        let message = "";
+        if (correctCount === 10) {
+          message = "Sangat baik! Kamu memiliki pemahaman yang kuat tentang kesehatan mental. Teruskan kepedulianmu!";
+        } else if (correctCount >= 7) {
+          message = "Pemahamanmu sudah baik. Terus tingkatkan kesadaran dan ajak orang lain peduli juga.";
+        } else if (correctCount >= 5) {
+          message = "Pemahaman cukup, tapi masih ada hal penting yang perlu kamu pelajari lebih lanjut.";
+        } else {
+          message = "Yuk, lebih banyak belajar tentang pentingnya kesehatan mental. Kamu bisa mulai dari sumber terpercaya atau konsultasi.";
+        }
+
+        summaryBox.innerHTML = `<strong>Kesimpulan & Saran:</strong> ${message}`;
+        summaryBox.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
